@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piconic - Gaming & Comedy</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #add8e6, #ffffff); /* Light blue to white gradient */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logo {
+            height: 50px; /* Adjust the height as needed */
+        }
+
+        .hero {
+            background: url('hero-image.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+        }
+
+        .hero p {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        .cta-button {
+            background: #ff4757;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #e84118;
+        }
+
+        .videos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .videos h2 {
+            margin-bottom: 20px;
+        }
+
+        .video {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+            width: 30%;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .video:hover {
+            transform: scale(1.05);
+        }
+
+        .video img {
+            width: 100%;
+            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ff4757;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- <img src="" alt="Piconic Logo" class="logo"> Replace 'logo.png' with the actual logo file -->
+     <p>Piconic</p>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Videos</a>
+        <a href="#">Blog</a>
+        <a href="Signin.html">SignIn</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Dive into the Fun!</h1>
+    <p>Your Ultimate Destination for Gaming and Laughter!</p>
+    <a href="https://youtube.com/@mrpico?si=WiD0tF0-CRTcvKGC" class="cta-button">Watch Now</a>
+</section>
+
+<section class="videos">
+    <h2>Trending Gaming & Comedy Videos</h2>
+    <div class="video">
+        <img src="https://media.gq-magazine.co.uk/photos/645b5c3c8223a5c3801b8b26/16:9/w_1280,c_limit/100-best-games-hp-b.jpg" alt="Video 1">
+        <h3>Epic Gaming Moments</h3>
+        <p>...views</p>
+        <a href="https://www.youtube.com/live/eFwIj8YFWZM?si=W-mvrVLb0zwyHxIc" class="cta-button">Watch</a>
+    </div>
+    <div class="video">
+        <img src="https://thumbs.dreamstime.com/b/goofy-funny-portrait-black-man-wall-comic-playful-comedy-joke-expression-silly-crazy-face-confident-goofy-322361667.jpg" alt="Video 2">
+        <h3> Laughing Time.</h3>
+        <p>...views</p>
+        <a href="https://youtu.be/oRzuwjv2bT0?si=FK3i7Xm6nN0e6CUM" class="cta-button">Watch</a>
