@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piconic Portfolio</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation bar */
+        nav {
+            background: #2c3e50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            text-decoration: none;
+            color: lightblue;
+            font-size: 18px;
+            font-family: 'Waltograph', sans-serif;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: lightblue;
+            font-family: 'Waltograph', sans-serif;
+        }
+
+        /* Portfolio section */
+        .portfolio {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px;
+            gap: 30px;
+        }
+        .portfolio .image-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .portfolio .image-container img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .portfolio .content {
+            flex: 2;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Pirata One', cursive;
+            position: relative;
+            text-align: center;
+        }
+        .portfolio .content h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            font-family: 'Brush Script MT', cursive;
+            color: #e74c3c;
+        }
+        .portfolio .content p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .portfolio .content a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .welcome {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            color: #e74c3c;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .welcome .emoji {
+            font-size: 28px;
+        }
+
+        /* YouTube and Map Section */
+        .youtube-map-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px;
+        }
+        .youtube-section {
+            flex: 2;
+        }
+        .youtube-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .youtube-section iframe {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .map-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .map-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .map-container {
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            display: none; /* Hide by default */
+        }
+        .social-icons a {
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #3498db;
+        }
+        .social-icons-id {
+            margin-top: 20px;
+        }
+
+        .social-icons-id p {
+            text-align: center;
+            margin-top: 5px;
+            color: #e74c3c;
+        }
+
+        /* Contact Popup */
+        .contact-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+        }
+        .contact-popup h2 {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        .contact-popup p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .contact-popup button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .contact-popup button:hover {
+            background-color: #2980b9;
+        }
+
+        /* About Popup */
+        .about-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+        }
+        .about-popup h2 {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        .about-popup p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .about-popup button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .about-popup button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Merriweather:wght@300;400;700&family=Pirata+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Waltograph&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <span class="logo">Piconic</span>
+        <div>
+            <a href="#">Home</a>
+            <a href="#" id="about-link">About</a>
+            <a href="#" id="contact-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <!-- Image -->
+        <div class="image-container">
+            <img src="https://scontent.fktm19-1.fna.fbcdn.net/v/t39.30808-1/417746404_381287117903556_3302430022670078199_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_cat=111&ccb=1-7&_nc_sid=50d2ac&_nc_eui2=AeGVZ54ocRCsVfFcHpfcHX0ejuR59X8o8DqO5Hn1fyjwOo48pI8S9Qi40vHRMmgV79__dAltY0wxP07rWs1lnaCX&_nc_ohc=35vK1KlN7fIQ7kNvgGm_hP8&_nc_zt=24&_nc_ht=scontent.fktm19-1.fna&_nc_gid=AyRkL6kM48Dg262Qy01yZ65&oh=00_AYDXyid7q6adj8lT5RiMRPhwoGBIMToDlhN16WbTy11AVA&oe=67636C53" alt="Piconic Profile">
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h1>Welcome</h1>
+            <p>
+                Piconic is a YouTuber passionate about comedy and gaming. With a vibrant personality and unique content, Piconic has captivated audiences across the globe. Join the journey and explore the exciting world of humor and virtual adventures.
+            </p>
+            <a href="https://youtube.com/@mrpico?si=ZKDqdtLK56Uo0cv9" target="_blank">Visit YouTube Channel</a>
+            <div class="welcome">
+                <span>Welcome!</span>
+                <span class="emoji">❤️😊</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube and Map Section -->
+    <section class="youtube-map-section">
+        <!-- YouTube Section -->
+        <div class="youtube-section">
+            <h2>Special Ones</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/V9PVRfjEBTI?si=hwvN98G-9haQkLkVput" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oRzuwjv2bT0?si=IVAHth5rVKchft3a" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>Our Location</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.688539710561!2d83.45194031550856!3d27.700769532218077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399686fb2d1d49af%3A0x2ef00436d48d8ebf!2sButwal%2C%20Nepal!5e0!3m2!1sen!2sus!4v1694770931884!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Icons Section -->
+    <section class="social-icons" id="social-icons">
+        <a href="https://www.facebook.com/ManojBhandari" target="_blank">📘</a>
+        <a href="https://www.instagram.com/cracker_mr_/" target="_blank">📸</a>
+        <a href="https://www.reddit.com/user/ManojBhandari" target="_blank">👾</a>
+    </section>
+
+    <!-- Contact Popup -->
+    <div class="contact-popup" id="contact-popup">
+        <h2>Contact</h2>
+        <p>Facebook ID: Manoj Bhandari</p>
+        <p>Instagram ID: cracker_mr_</p>
+        <p>Reddit ID: Manoj Bhandari</p>
+        <button id="close-popup">Close</button>
+    </div>
+
+    <!-- About Popup -->
+    <div class="about-popup" id="about-popup">
+        <h2>About Piconic</h2>
+        <p>
+            Piconic is a YouTuber who creates hilarious content related to comedy and gaming. His infectious energy and jokes have made him a favorite among fans. Piconic enjoys engaging with his audience through interactive videos and streams.
+        </p>
+        <button id="close-about-popup">Close</button>
+    </div>
+
+    <script>
+        // Toggle the contact popup when "Contact" button is clicked
+        document.getElementById("contact-link").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("contact-popup").style.display = "block";
+        });
+
+        // Close the contact popup when the close button is clicked
+        document.getElementById("close-popup").addEventListener("click", function() {
+            document.getElementById("contact-popup").style.display = "none";
+        });
+
+        // Toggle the about popup when "About" button is clicked
+        document.getElementById("about-link").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("about-popup").style.display = "block";
+        });
+
+        // Close the about popup when the close button is clicked
+        document.getElementById("close-about-popup").addEventListener("click", function() {
+            document.getElementById("about-popup").style.display = "none";
+        });
+    </script>
+</body>
+</html>
